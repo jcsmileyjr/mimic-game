@@ -1,7 +1,8 @@
 import './App.css';
-//import test from './video/frontloop6.gif';
 import Key from './Components/Key';
+
 function App() {
+
   return (
     <div className="App">
       <header className="header-style">

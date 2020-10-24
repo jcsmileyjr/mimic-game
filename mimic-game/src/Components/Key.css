@@ -7,18 +7,38 @@ Dark (grey) Secondary Color: #707070
 
 .button-style {
     color: #FFD40D;
-    background-color: #0D0EFF;;
-    /*
-    font-size: larger;
-    font-weight: bolder;
-    border: none;
-    margin: 10px;
-    padding: 10px;
-    width: 13vw;
-    */
+    background-color: #0D0EFF;
     font-size: 4vh;
     margin-left: 2vw;
     margin-right: 2vw;
     padding-left: 4.5vw;
     padding-right: 4.4vw;
+    transition: all 1s;
+}
+
+.key-clicked {
+    /*
+    color: #0D0EFF;
+    background-color: #EAFF00;
+    transform: scale(1.2);
+    */
+    animation: clicked .5s ease-in-out;
+}
+
+@keyframes clicked {
+    0% {
+        transform: scale(1, 1);
+        color: #0D0EFF;
+        background-color: #EAFF00;
+      }
+      50% {
+        transform: scale(1.5, 1.5);
+        color: #0D0EFF;
+        background-color: #EAFF00;
+      }
+      100% {
+        transform: scale(1, 1);
+        color: #FFD40D;
+        background-color: #0D0EFF;
+      }
 }
