@@ -1,13 +1,13 @@
 import './App.css';
 //import test from './video/frontloop6.gif';
-
+import Key from './Components/Key';
 function App() {
   return (
     <div className="App">
       <header className="header-style">
         <p>Let's play the game</p>
         <h1 className="remove-top-margin">Mimic the Beat</h1>
-        <p>Instructions: Listen to the Beat, then Repeat</p>
+        <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
         <h4 className="remove-top-margin">Score: 0</h4>
       </header>
       <main>        
@@ -22,7 +22,17 @@ function App() {
         <section>
           <h3>KeyBoard</h3>
           <article>
-
+            <Key letter="A" />
+            <Key letter="S" />
+            <Key letter="D" />
+            <Key letter="F" />
+            <Key letter="G" />
+          </article>
+          <article className="space-between-key-group">
+            <Key letter="H" />
+            <Key letter="J" />
+            <Key letter="K" />
+            <Key letter="L" />
           </article>
         </section>
       </main>

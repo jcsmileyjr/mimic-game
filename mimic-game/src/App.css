@@ -27,5 +27,25 @@ main, section {
 svg {
   height: 100px;
   width: 100px;
-  fill: #0D0EFF
+  fill: #0D0EFF;
 }
+
+h1 {
+  color: #0D0EFF;
+  text-decoration: underline;
+}
+
+.instruction-section {
+  color:#707070;
+  margin-top: -5px;
+}
+
+.instruction-style {
+  color: #0D0EFF;
+  font-weight: bold;
+}
+
+.space-between-key-group {
+  margin-top: 5vh;
+}
+
