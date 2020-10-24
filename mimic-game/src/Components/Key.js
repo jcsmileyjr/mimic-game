@@ -6,6 +6,10 @@ const Key = (props) => {
 
     const playKey = () => {
         setClicked(true);
+
+        setTimeout(() => {
+            setClicked(false)
+        }, 500);
     }
     return(
         <button onClick={playKey} className={clicked ?'button-style key-clicked':'button-style'}>

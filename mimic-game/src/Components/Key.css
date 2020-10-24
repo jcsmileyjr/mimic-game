@@ -17,11 +17,6 @@ Dark (grey) Secondary Color: #707070
 }
 
 .key-clicked {
-    /*
-    color: #0D0EFF;
-    background-color: #EAFF00;
-    transform: scale(1.2);
-    */
     animation: clicked .5s ease-in-out;
 }
 
