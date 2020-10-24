@@ -6,6 +6,8 @@ const Key = (props) => {
 
     const playKey = () => {
         setClicked(true);
+        let audio = new Audio(props.sound);
+        audio.play();
 
         setTimeout(() => {
             setClicked(false)

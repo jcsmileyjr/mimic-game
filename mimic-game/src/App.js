@@ -1,5 +1,14 @@
 import './App.css';
 import Key from './Components/Key';
+import sound1 from './assets/boom.wav';
+import sound2 from './assets/clap.wav';
+import sound3 from './assets/kick.wav';
+import sound4 from './assets/openhat.wav';
+import sound5 from './assets/ride.wav';
+import sound6 from './assets/snare.wav';
+import sound7 from './assets/tink.wav';
+import sound8 from './assets/tom.wav';
+import sound9 from './assets/hihat.wav';
 
 function App() {
 
@@ -23,17 +32,17 @@ function App() {
         <section>
           <h3>KeyBoard</h3>
           <article>
-            <Key letter="A" />
-            <Key letter="S" />
-            <Key letter="D" />
-            <Key letter="F" />
-            <Key letter="G" />
+            <Key letter="A" sound={sound1}/>
+            <Key letter="S" sound={sound2}/>
+            <Key letter="D" sound={sound3}/>
+            <Key letter="F" sound={sound4}/>
+            <Key letter="G" sound={sound5}/>
           </article>
           <article className="space-between-key-group">
-            <Key letter="H" />
-            <Key letter="J" />
-            <Key letter="K" />
-            <Key letter="L" />
+            <Key letter="H" sound={sound6}/>
+            <Key letter="J" sound={sound7}/>
+            <Key letter="K" sound={sound8}/>
+            <Key letter="L" sound={sound9}/>
           </article>
         </section>
       </main>
