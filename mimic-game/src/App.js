@@ -12,8 +12,21 @@ import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
 import record1 from './assets/record1.webm';
 
+const record1Answers = ["A","S","D","F","G","H","J","K","L"];
+
 function App() {
   const [userActions, setUserActions] = useState([]);
+  const [remainingBeats, setRemainingBeats] = useState(0);
+
+  const updateBeats = (key) => {
+    let correctKey = record1Answers[remainingBeats];
+    if(key === correctKey){
+      let currentBeatCount = remainingBeats + 1;
+      setRemainingBeats(currentBeatCount);
+    }else{
+      console.log("try again");
+    }
+  }
 
   const playRecordingOne = () => {
     let audio = new Audio(record1);
@@ -22,6 +35,7 @@ function App() {
 
   const saveUserAction = (letter) => {
     setUserActions([...userActions, letter]);
+    updateBeats(letter);
   }
 
   return (
@@ -42,19 +56,22 @@ function App() {
           </button>
         </section>        
         <section>
-          <h3>KeyBoard</h3>
+          <article className="keyboard-header-section">
+            <h3>KeyBoard</h3>
+            <h3>Remaining Beats: {9-remainingBeats}</h3>
+          </article>          
           <article>
             <Key letter="A" sound={sound1} userAction={saveUserAction}/>
-            <Key letter="S" sound={sound2}/>
-            <Key letter="D" sound={sound3}/>
-            <Key letter="F" sound={sound4}/>
-            <Key letter="G" sound={sound5}/>
+            <Key letter="S" sound={sound2} userAction={saveUserAction}/>
+            <Key letter="D" sound={sound3} userAction={saveUserAction}/>
+            <Key letter="F" sound={sound4} userAction={saveUserAction}/>
+            <Key letter="G" sound={sound5} userAction={saveUserAction}/>
           </article>
           <article className="space-between-key-group">
-            <Key letter="H" sound={sound6}/>
-            <Key letter="J" sound={sound7}/>
-            <Key letter="K" sound={sound8}/>
-            <Key letter="L" sound={sound9}/>
+            <Key letter="H" sound={sound6} userAction={saveUserAction}/>
+            <Key letter="J" sound={sound7} userAction={saveUserAction}/>
+            <Key letter="K" sound={sound8} userAction={saveUserAction}/>
+            <Key letter="L" sound={sound9} userAction={saveUserAction}/>
           </article>
         </section>
       </main>
