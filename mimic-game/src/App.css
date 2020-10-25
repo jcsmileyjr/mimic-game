@@ -24,10 +24,16 @@ main, section {
   height: 30vh;
 }
 
-svg {
+.play-music {
   height: 100px;
   width: 100px;
   fill: #0D0EFF;
+}
+
+.good-beat {
+  height: 100px;
+  width: 100px;
+  fill: #FFD40D;
 }
 
 h1 {
@@ -57,4 +63,13 @@ h1 {
 .keyboard-header-section {
   display: flex;
   justify-content: space-between;
+}
+
+.hide-icon {
+  display: none;
+}
+
+.bad-beat-icon-style {
+  height: 100px;
+  width: 100px;
 }

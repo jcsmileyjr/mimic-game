@@ -11,20 +11,43 @@ import sound7 from './assets/tink.wav';
 import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
 import record1 from './assets/record1.webm';
+import badBeatIcon from './assets/wrongBeat.png';
 
 const record1Answers = ["A","S","D","F","G","H","J","K","L"];
 
 function App() {
   const [userActions, setUserActions] = useState([]);
   const [remainingBeats, setRemainingBeats] = useState(0);
+  const [showListenIcon, setListenIcon] = useState(true);
+  const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false);
+  const [showBadBeatIcon, setBadBeatIcon] = useState(false);
+
+  const correctBeat = () => {
+    setListenIcon(false);
+    setCorrectBeatIcon(true);
+    setTimeout(() => {
+      setListenIcon(true);
+      setCorrectBeatIcon(false);
+    }, 300);
+  }
+
+  const badBeat = () => {
+    setListenIcon(false);
+    setBadBeatIcon(true);
+    setTimeout(() => {
+      setListenIcon(true);
+      setBadBeatIcon(false);
+    }, 300);
+  }
 
   const updateBeats = (key) => {
     let correctKey = record1Answers[remainingBeats];
     if(key === correctKey){
+      correctBeat();
       let currentBeatCount = remainingBeats + 1;
       setRemainingBeats(currentBeatCount);
     }else{
-      console.log("try again");
+      badBeat();
     }
   }
 
@@ -47,13 +70,23 @@ function App() {
         <h4 className="remove-top-margin">Score: 0</h4>
       </header>
       <main>        
-        <section className="section-divider">
+        <section className={showListenIcon?"section-divider":"hide-icon"}>
           <h3>Click to Listen</h3>
           <button onClick={playRecordingOne}>
-            <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
+            <svg className="play-music" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
               <path d="M0 1v22h24v-22h-24zm4 20h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm14 12h-12v-10h12v10zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm-12 10v-6l5 3-5 3z"/>
             </svg>
           </button>
+        </section>
+        <section className={showCorrectBeatIcon?"section-divider":"hide-icon"}>
+          <h3>Perfect</h3>
+          <svg className="good-beat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 21h-12v-2h12v2zm4-9l8-1v6.681c-.002 1.555-1.18 2.319-2.257 2.319-.907 0-1.743-.542-1.743-1.61 0-.96.903-1.852 2-2.073v-2.317l-4 .5v4.181c-.002 1.555-1.18 2.319-2.257 2.319-.907 0-1.743-.542-1.743-1.61 0-.96.903-1.852 2-2.073v-5.317zm-4 4.976h-12v-2h12v2zm0-3.976h-12v-2h12v2zm12-4h-24v-2h24v2zm0-4h-24v-2h24v2z"/>
+          </svg>
+        </section>
+        <section className={showBadBeatIcon?"section-divider":"hide-icon"}>
+          <h3>Incorrect</h3>
+          <img src={badBeatIcon} className="bad-beat-icon-style" alt="Big red x symbol" />
         </section>        
         <section>
           <article className="keyboard-header-section">
