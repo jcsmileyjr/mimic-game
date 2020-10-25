@@ -12,6 +12,8 @@ const Key = (props) => {
         setTimeout(() => {
             setClicked(false)
         }, 500);
+
+        props.userAction(props.letter);
     }
     return(
         <button onClick={playKey} className={clicked ?'button-style key-clicked':'button-style'}>

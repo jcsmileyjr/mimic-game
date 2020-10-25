@@ -1,4 +1,5 @@
 import './App.css';
+import React, {useState} from 'react';
 import Key from './Components/Key';
 import sound1 from './assets/boom.wav';
 import sound2 from './assets/clap.wav';
@@ -12,9 +13,15 @@ import sound9 from './assets/hihat.wav';
 import record1 from './assets/record1.webm';
 
 function App() {
+  const [userActions, setUserActions] = useState([]);
+
   const playRecordingOne = () => {
     let audio = new Audio(record1);
         audio.play();
+  }
+
+  const saveUserAction = (letter) => {
+    setUserActions([...userActions, letter]);
   }
 
   return (
@@ -37,7 +44,7 @@ function App() {
         <section>
           <h3>KeyBoard</h3>
           <article>
-            <Key letter="A" sound={sound1}/>
+            <Key letter="A" sound={sound1} userAction={saveUserAction}/>
             <Key letter="S" sound={sound2}/>
             <Key letter="D" sound={sound3}/>
             <Key letter="F" sound={sound4}/>
