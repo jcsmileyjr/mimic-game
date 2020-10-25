@@ -60,6 +60,10 @@ h1 {
   padding-bottom: 10px;
 }
 
+.no-divider {
+  border: none;
+}
+
 .keyboard-header-section {
   display: flex;
   justify-content: space-between;

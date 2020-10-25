@@ -12,6 +12,7 @@ import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
 import record1 from './assets/record1.webm';
 import badBeatIcon from './assets/wrongBeat.png';
+import celebration from './assets/celebration.png';
 
 const record1Answers = ["A","S","D","F","G","H","J","K","L"];
 
@@ -67,7 +68,6 @@ function App() {
         <p>Let's play the game</p>
         <h1 className="remove-top-margin">Mimic the Beat</h1>
         <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
-        <h4 className="remove-top-margin">Score: 0</h4>
       </header>
       <main>        
         <section className={showListenIcon?"section-divider":"hide-icon"}>
@@ -80,15 +80,13 @@ function App() {
         </section>
         <section className={showCorrectBeatIcon?"section-divider":"hide-icon"}>
           <h3>Perfect</h3>
-          <svg className="good-beat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 21h-12v-2h12v2zm4-9l8-1v6.681c-.002 1.555-1.18 2.319-2.257 2.319-.907 0-1.743-.542-1.743-1.61 0-.96.903-1.852 2-2.073v-2.317l-4 .5v4.181c-.002 1.555-1.18 2.319-2.257 2.319-.907 0-1.743-.542-1.743-1.61 0-.96.903-1.852 2-2.073v-5.317zm-4 4.976h-12v-2h12v2zm0-3.976h-12v-2h12v2zm12-4h-24v-2h24v2zm0-4h-24v-2h24v2z"/>
-          </svg>
+          <img src={celebration} className="bad-beat-icon-style" alt="Big green party symbol" />
         </section>
         <section className={showBadBeatIcon?"section-divider":"hide-icon"}>
           <h3>Incorrect</h3>
           <img src={badBeatIcon} className="bad-beat-icon-style" alt="Big red x symbol" />
         </section>        
-        <section>
+        <section className={remainingBeats < 9?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>
             <h3>Remaining Beats: {9-remainingBeats}</h3>
@@ -107,6 +105,12 @@ function App() {
             <Key letter="L" sound={sound9} userAction={saveUserAction}/>
           </article>
         </section>
+        {remainingBeats === 9 &&
+        <section>
+          <h2>You Won</h2>
+        </section>
+        }
+
       </main>
     </div>
   );
