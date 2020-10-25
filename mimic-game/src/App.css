@@ -1,0 +1,79 @@
+/*
+Primary Color:#FFD40D
+Secondary Color: #0D0EFF
+Transition Color: //EAFF00
+Dark (grey) Secondary Color: #707070
+*/
+
+.header-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.remove-top-margin {
+  margin-top: -10px;
+}
+
+main, section {
+  text-align: center;
+}
+
+.test-video {
+  width: 100vw;
+  height: 30vh;
+}
+
+.play-music {
+  height: 100px;
+  width: 100px;
+  fill: #0D0EFF;
+}
+
+.good-beat {
+  height: 100px;
+  width: 100px;
+  fill: #FFD40D;
+}
+
+h1 {
+  color: #0D0EFF;
+  text-decoration: underline;
+}
+
+.instruction-section {
+  color:#707070;
+  margin-top: -5px;
+}
+
+.instruction-style {
+  color: #0D0EFF;
+  font-weight: bold;
+}
+
+.space-between-key-group {
+  margin-top: 5vh;
+}
+
+.section-divider {
+  border-bottom: 1px solid #707070;
+  padding-bottom: 10px;
+}
+
+.no-divider {
+  border: none;
+}
+
+.keyboard-header-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hide-icon {
+  display: none;
+}
+
+.bad-beat-icon-style {
+  height: 100px;
+  width: 100px;
+}
