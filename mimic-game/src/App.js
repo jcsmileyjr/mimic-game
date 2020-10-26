@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
 import Key from './Components/Key';
+import {updateBeats} from './js/functions';
 
 /*Sounds use as beats when the user click a button */
 import sound1 from './assets/boom.wav';
@@ -21,6 +22,8 @@ import celebration from './assets/celebration.png';
 /*Sequnece of correct letters for the correct beat */
 const record1Answers = ["A","S","D","F","G","H","J","K","L"];
 
+
+
 function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
@@ -28,47 +31,19 @@ function App() {
   const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
   const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
 
-  // Function called, within the updateBeats(), when user click a beat and its the correct beat. Then the celebration is icon is shown for a second. 
-  const correctBeat = () => {
-    setListenIcon(false);
-    setCorrectBeatIcon(true);
-    setTimeout(() => {
-      setListenIcon(true);
-      setCorrectBeatIcon(false);
-    }, 300);
-  }
-
-  // Function called, within the updateBeats(), when user click a beat and its the incorrect beat. Then the celebration is icon is shown for a second. 
-  const badBeat = () => {
-    setListenIcon(false);
-    setBadBeatIcon(true);
-    setTimeout(() => {
-      setListenIcon(true);
-      setBadBeatIcon(false);
-    }, 300);
-  }
-
-  // Function called when user click a beat to update a score and update the "Listen" image to show the user if the beat is incorrect or correct. 
-  const updateBeats = (key) => {
-    let correctKey = record1Answers[remainingBeats];
-    if(key === correctKey){
-      correctBeat();
-      let currentBeatCount = remainingBeats + 1;
-      setRemainingBeats(currentBeatCount);
-    }else{
-      badBeat();
-    }
-  }
-
-  
+ 
   const playRecordingOne = () => {
     let audio = new Audio(record1);
         audio.play();
   }
 
+  
   const saveUserAction = (letter) => {
-    setUserActions([...userActions, letter]);
-    updateBeats(letter);
+    // Save the user's beat to be matched against the recored correct beat
+    setUserActions([...userActions, letter]); 
+
+    // Update the score and image to show correct and incorrect beat chosen
+    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setListenIcon,setCorrectBeatIcon, setBadBeatIcon );
   }
 
   return (
