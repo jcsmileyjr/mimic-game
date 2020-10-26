@@ -1,6 +1,8 @@
 import './App.css';
 import React, {useState} from 'react';
 import Key from './Components/Key';
+
+/*Sounds use as beats when the user click a button */
 import sound1 from './assets/boom.wav';
 import sound2 from './assets/clap.wav';
 import sound3 from './assets/kick.wav';
@@ -11,18 +13,22 @@ import sound7 from './assets/tink.wav';
 import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
 import record1 from './assets/record1.webm';
+
+/*Images use to replace the listen image when the user choose an correct or incorrect beat */
 import badBeatIcon from './assets/wrongBeat.png';
 import celebration from './assets/celebration.png';
 
+/*Sequnece of correct letters for the correct beat */
 const record1Answers = ["A","S","D","F","G","H","J","K","L"];
 
 function App() {
-  const [userActions, setUserActions] = useState([]);
-  const [remainingBeats, setRemainingBeats] = useState(0);
-  const [showListenIcon, setListenIcon] = useState(true);
-  const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false);
-  const [showBadBeatIcon, setBadBeatIcon] = useState(false);
+  const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
+  const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
+  const [showListenIcon, setListenIcon] = useState(true); // Displays or hides the Listen image while the user plays a beat
+  const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
+  const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
 
+  // Function called, within the updateBeats(), when user click a beat and its the correct beat. Then the celebration is icon is shown for a second. 
   const correctBeat = () => {
     setListenIcon(false);
     setCorrectBeatIcon(true);
@@ -32,6 +38,7 @@ function App() {
     }, 300);
   }
 
+  // Function called, within the updateBeats(), when user click a beat and its the incorrect beat. Then the celebration is icon is shown for a second. 
   const badBeat = () => {
     setListenIcon(false);
     setBadBeatIcon(true);
@@ -41,6 +48,7 @@ function App() {
     }, 300);
   }
 
+  // Function called when user click a beat to update a score and update the "Listen" image to show the user if the beat is incorrect or correct. 
   const updateBeats = (key) => {
     let correctKey = record1Answers[remainingBeats];
     if(key === correctKey){
@@ -52,6 +60,7 @@ function App() {
     }
   }
 
+  
   const playRecordingOne = () => {
     let audio = new Audio(record1);
         audio.play();
@@ -85,7 +94,8 @@ function App() {
         <section className={showBadBeatIcon?"section-divider":"hide-icon"}>
           <h3>Incorrect</h3>
           <img src={badBeatIcon} className="bad-beat-icon-style" alt="Big red x symbol" />
-        </section>        
+        </section>
+                
         <section className={remainingBeats < 9?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>
@@ -105,6 +115,7 @@ function App() {
             <Key letter="L" sound={sound9} userAction={saveUserAction}/>
           </article>
         </section>
+
         {remainingBeats === 9 &&
         <section>
           <h2>You Won</h2>
