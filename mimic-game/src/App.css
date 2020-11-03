@@ -62,12 +62,12 @@ h1 {
 }
 
 .no-divider {
-  border: none;
+  border: .5px solid grey;
 }
 
 .keyboard-header-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .hide-icon {
