@@ -13,7 +13,7 @@ import sound6 from './assets/snare.wav';
 import sound7 from './assets/tink.wav';
 import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
-import record1 from './assets/record1.webm';
+import record1 from './assets/beat-1-A.webm';
 
 /*Images use to replace the listen image when the user choose an correct or incorrect beat */
 import badBeatIcon from './assets/wrongBeat.png';
@@ -27,14 +27,16 @@ const record1Answers = ["A","S","D","F","G","H","J","K","L"];
 function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
+  
+  
   const [showListenIcon, setListenIcon] = useState(true); // Displays or hides the Listen image while the user plays a beat
   const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
   const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
 
  
   const playRecordingOne = () => {
-    let audio = new Audio(record1);
-        audio.play();
+   let audio = new Audio(record1);
+   audio.play();
   }
 
   
@@ -54,23 +56,14 @@ function App() {
         <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
       </header>
       <main>        
-        <section className={showListenIcon?"section-divider":"hide-icon"}>
-          <h3>Click to Listen</h3>
-          <button onClick={playRecordingOne}>
-            <svg className="play-music" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
-              <path d="M0 1v22h24v-22h-24zm4 20h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm14 12h-12v-10h12v10zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm-12 10v-6l5 3-5 3z"/>
-            </svg>
-          </button>
-        </section>
-        <section className={showCorrectBeatIcon?"section-divider":"hide-icon"}>
-          <h3>Perfect</h3>
-          <img src={celebration} className="bad-beat-icon-style" alt="Big green party symbol" />
-        </section>
-        <section className={showBadBeatIcon?"section-divider":"hide-icon"}>
-          <h3>Incorrect</h3>
-          <img src={badBeatIcon} className="bad-beat-icon-style" alt="Big red x symbol" />
-        </section>
-                
+        <section className="divided-section">
+          <article className="play-area narrative-text">
+            <p>What's up junior Beat Master. Class is in session and Super-Hero Beat Master Flex is ready to teach a lesson. Mimic his beat so the party people can move their feet.</p>
+          </article>
+          <article className="play-area play-button-area">
+            <button onClick={playRecordingOne} className="play-button"><p>Play the Beat</p></button>
+          </article>
+        </section>                
         <section className={remainingBeats < 9?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>

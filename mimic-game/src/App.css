@@ -53,6 +53,7 @@ h1 {
 
 .space-between-key-group {
   margin-top: 5vh;
+  margin-bottom: 5vh;/*temporary*/
 }
 
 .section-divider {
@@ -77,3 +78,30 @@ h1 {
   height: 100px;
   width: 100px;
 }
+
+.divided-section {
+  display: flex;
+}
+
+.play-area {
+  flex: 1;
+}
+
+.play-button-area {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 70%;
+}
+
+.play-button {
+  width: 50%;
+  height: 50%;
+  background-color: green;
+  color: white;
+}
+
+.narrative-text {
+  font-weight: bolder;
+}
+
