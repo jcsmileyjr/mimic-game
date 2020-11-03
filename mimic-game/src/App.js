@@ -20,8 +20,8 @@ import badBeatIcon from './assets/wrongBeat.png';
 import celebration from './assets/celebration.png';
 
 /*Sequnece of correct letters for the correct beat */
-const record1Answers = ["A","S","D","F","G","H","J","K","L"];
-
+//const record2Answers = ["A","S","D","F","G","H","J","K","L"];
+const record1Answers = ["A", "A", "S", "A", "A", "S","J", "A", "A", "S", "A", "A", "S","J" ];
 
 
 function App() {
@@ -64,10 +64,10 @@ function App() {
             <button onClick={playRecordingOne} className="play-button"><p>Play the Beat</p></button>
           </article>
         </section>                
-        <section className={remainingBeats < 9?"no-divider":"hide-icon"}>
+        <section className={remainingBeats < record1Answers.length?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>
-            <h3>Remaining Beats: {9-remainingBeats}</h3>
+            <h3>Remaining Beats: {record1Answers.length-remainingBeats}</h3>
           </article>          
           <article>
             <Key letter="A" sound={sound1} userAction={saveUserAction}/>
