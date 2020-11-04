@@ -24,11 +24,12 @@ import celebration from './assets/celebration.png';
 const record1Answers = ["A", "A", "S", "A", "A", "S","J", "A", "A", "S", "A", "A", "S","J" ];
 
 
+
 function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
   
-  
+  const [showDanceColor, setDanceColor] = useState(0)
   const [showListenIcon, setListenIcon] = useState(true); // Displays or hides the Listen image while the user plays a beat
   const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
   const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
@@ -45,7 +46,7 @@ function App() {
     setUserActions([...userActions, letter]); 
 
     // Update the score and image to show correct and incorrect beat chosen
-    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setListenIcon,setCorrectBeatIcon, setBadBeatIcon );
+    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor );
   }
 
   return (
@@ -55,7 +56,7 @@ function App() {
         <h1 className="remove-top-margin">Mimic the Beat</h1>
         <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
       </header>
-      <main>        
+      <main className={showDanceColor}>        
         <section className="divided-section">
           <article className="play-area narrative-text">
             <p>What's up junior Beat Master. Class is in session and Super-Hero Beat Master Flex is ready to teach a lesson. Mimic his beat so the party people can move their feet.</p>
@@ -84,7 +85,7 @@ function App() {
           </article>
         </section>
 
-        {remainingBeats === 9 &&
+        {remainingBeats === record1Answers.length &&
         <section>
           <h2>You Won</h2>
         </section>

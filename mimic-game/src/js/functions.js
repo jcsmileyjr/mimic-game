@@ -20,14 +20,35 @@
     }, 300);
   }
 
+  const updateBackgroundColorByKey = (letterKey, isShowDanceColor) => {
+    const danceColors = [
+      {colorKey:"A", color:"lightGreen"},
+      {colorKey:"S", color:"blue"},
+      {colorKey:"D", color:"yellow"},
+      {colorKey:"F", color:"green"},
+      {colorKey:"G", color:"purple"},
+      {colorKey:"H", color:"red"},
+      {colorKey:"J", color:"orange"},
+      {colorKey:"K", color:"deepPurple"},
+      {colorKey:"L", color:"burntOrange"},
+    ];
+    console.log("background function runs with key " + letterKey)
+    danceColors.forEach((colorObject) => {
+      if(letterKey === colorObject.colorKey){
+        console.log("matching color key")
+        isShowDanceColor(colorObject.color)
+      }
+    })
+  }
+
   // Function called when user click a beat to update a score and update the "Listen" image to show the user if the beat is incorrect or correct. 
-  export const updateBeats = (key, remainingBeats,setRemainingBeats,recording, isShowListenIcon, isShowCelebrationIcon, isIncorrectBeatIcon) => {
+  export const updateBeats = (key, remainingBeats,setRemainingBeats,recording, isShowDanceColor) => {
     let correctKey = recording[remainingBeats];
+
     if(key === correctKey){
-      correctBeat(isShowListenIcon, isShowCelebrationIcon);
       let currentBeatCount = remainingBeats + 1;
       setRemainingBeats(currentBeatCount);
-    }else{
-      badBeat(isShowListenIcon, isIncorrectBeatIcon);
     }
+
+    updateBackgroundColorByKey(key, isShowDanceColor);
   }

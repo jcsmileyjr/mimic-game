@@ -106,3 +106,39 @@ h1 {
   font-size: small;
 }
 
+.lightGreen {
+  background-color: #59FF26;
+}
+
+.green {
+  background-color: #00FF60;
+}
+
+.blue {
+  background-color: #0086FF;
+}
+
+.orange {
+  background-color: #FFAC26;
+}
+
+.yellow {
+  background-color: #F0FF26;
+}
+
+.purple {
+  background-color: #971AFF;
+}
+
+.red {
+  background-color: #FF3126;
+}
+
+.burntOrange {
+  background-color: #FFA71A;
+}
+
+.deepPurple {
+  background-color: #7D1FCC;
+}
+
