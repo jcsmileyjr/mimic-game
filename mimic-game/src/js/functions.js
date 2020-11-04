@@ -32,13 +32,17 @@
       {colorKey:"K", color:"deepPurple"},
       {colorKey:"L", color:"burntOrange"},
     ];
-    console.log("background function runs with key " + letterKey)
+    
     danceColors.forEach((colorObject) => {
       if(letterKey === colorObject.colorKey){
         console.log("matching color key")
         isShowDanceColor(colorObject.color)
       }
     })
+
+    setTimeout(() => {
+      isShowDanceColor("white");
+  }, 300);
   }
 
   // Function called when user click a beat to update a score and update the "Listen" image to show the user if the beat is incorrect or correct. 

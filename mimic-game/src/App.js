@@ -50,13 +50,13 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={`app ${showDanceColor}`}>
       <header className="header-style">
         <p>Let's play the game</p>
         <h1 className="remove-top-margin">Mimic the Beat</h1>
         <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
       </header>
-      <main className={showDanceColor}>        
+      <main >        
         <section className="divided-section">
           <article className="play-area narrative-text">
             <p>What's up junior Beat Master. Class is in session and Super-Hero Beat Master Flex is ready to teach a lesson. Mimic his beat so the party people can move their feet.</p>
