@@ -43,6 +43,8 @@ function App() {
 
   
   const saveUserAction = (letter) => {
+    // Hide play button area if user press a beat button
+    setHidePlayButton(true);
     // Save the user's beat to be matched against the recored correct beat
     setUserActions([...userActions, letter]); 
 
