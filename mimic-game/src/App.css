@@ -37,7 +37,6 @@ main, section {
 }
 
 h1 {
-  color: #0D0EFF;
   text-decoration: underline;
 }
 
@@ -47,8 +46,19 @@ h1 {
 }
 
 .instruction-style {
-  color: #0D0EFF;
   font-weight: bold;
+}
+
+.primary-color {
+  color: #0D0EFF;
+}
+
+.secondary-color {
+  color: white;
+}
+
+.constrast-black-color {
+  color: black
 }
 
 .space-between-key-group {
@@ -76,10 +86,6 @@ h1 {
 
 .hide-play-section {
   display: none;
-}
-
-.show-play-section {
-  
 }
 
 .bad-beat-icon-style {

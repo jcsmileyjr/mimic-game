@@ -27,7 +27,7 @@ const record1Answers = ["A", "A", "S", "A", "A", "S","J", "A", "A", "S", "A", "A
 function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
-  
+  const [showPrimaryColor, setPrimaryColor] = useState(true); // Update title and instructions color when user press the beat
   const [showDanceColor, setDanceColor] = useState(0) //Update the background color when the user press a beat
   const [hidePlayButtonSection, setHidePlayButton] = useState(false); // After user gets the instructions and dance beat, hide the area
   const [getBeatIcons, setBeatIcons] = useState(blankIcon) // Updates a dance beat image while the user plays a beat
@@ -47,15 +47,20 @@ function App() {
     setUserActions([...userActions, letter]); 
 
     // Update the score and image to show correct and incorrect beat chosen
-    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons );
+    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons, setPrimaryColor );
   }
 
   return (
     <div className={`app ${showDanceColor}`}>
       <header className="header-style">
-        <p>Let's play the game</p>
-        <h1 className="remove-top-margin">Mimic the Beat</h1>
-        <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
+        <p className={!showPrimaryColor?"constrast-black-color":""}>Let's play the game</p>
+        <h1 className={showPrimaryColor?"remove-top-margin primary-color":"remove-top-margin secondary-color"}>Mimic the Beat</h1>
+        <p className={showPrimaryColor?"instruction-section":"instruction-section constrast-black-color"}>Instructions: 
+          <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Listen
+          </span> to the <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}>Beat</span>, then 
+          <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Repeat</span>
+        
+        </p>
       </header>
       <main >
         <section className={hidePlayButtonSection?"hide-play-section": "divided-section"}>
