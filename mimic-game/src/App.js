@@ -102,8 +102,23 @@ function App() {
           <h2>You Won</h2>
         </section>
         }
-        <footer><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></footer>
       </main>
+      <footer>
+          <section className="options-section">
+            <article className="options">
+              <p className="icon-author">Repeat "Beat Masters" training beat</p>
+              <button onClick={playRecordingOne} className="footer-button">Play the Beat</button>
+            </article>
+            <article className="options">
+              <p className="icon-author">Record your own beat</p>
+              <section className="record-button-section">
+                <button onClick={playRecordingOne} className="footer-button options record-buttons">Record</button>
+                <button onClick={playRecordingOne} className="footer-button options record-buttons">Play</button>
+              </section>
+            </article>
+          </section>
+          <p className="authors">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p>
+          </footer>
     </div>
   );
 }
