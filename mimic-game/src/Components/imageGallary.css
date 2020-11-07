@@ -1,0 +1,11 @@
+
+.image-section-style {
+    display: flex;
+    padding-top: 1vh;
+}
+
+.image-style {
+    flex: 1;
+    width:10vw;
+    height: auto;
+}

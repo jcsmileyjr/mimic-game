@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
 import Key from './Components/Key';
+import ImageGallary from './Components/ImageGallary.js';
 import {updateBeats} from './js/functions';
 
 /*Sounds use as beats when the user click a button */
@@ -27,7 +28,7 @@ const record1Answers = ["A", "A", "S", "A", "A", "S","J", "A", "A", "S", "A", "A
 function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
-  
+  const [showPrimaryColor, setPrimaryColor] = useState(true); // Update title and instructions color when user press the beat
   const [showDanceColor, setDanceColor] = useState(0) //Update the background color when the user press a beat
   const [hidePlayButtonSection, setHidePlayButton] = useState(false); // After user gets the instructions and dance beat, hide the area
   const [getBeatIcons, setBeatIcons] = useState(blankIcon) // Updates a dance beat image while the user plays a beat
@@ -43,19 +44,26 @@ function App() {
 
   
   const saveUserAction = (letter) => {
+    // Hide play button area if user press a beat button
+    setHidePlayButton(true);
     // Save the user's beat to be matched against the recored correct beat
     setUserActions([...userActions, letter]); 
 
     // Update the score and image to show correct and incorrect beat chosen
-    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons );
+    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons, setPrimaryColor );
   }
 
   return (
     <div className={`app ${showDanceColor}`}>
       <header className="header-style">
-        <p>Let's play the game</p>
-        <h1 className="remove-top-margin">Mimic the Beat</h1>
-        <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
+        <ImageGallary />
+        <p className={!showPrimaryColor?"constrast-black-color":""}>Let's play the game</p>
+        <h1 className={showPrimaryColor?"remove-top-margin primary-color":"remove-top-margin secondary-color"}>Mimic the Beat</h1>
+        <p className={showPrimaryColor?"instruction-section":"instruction-section constrast-black-color"}>Instructions: 
+          <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Listen
+          </span> to the <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}>Beat</span>, then 
+          <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Repeat</span>        
+        </p>
       </header>
       <main >
         <section className={hidePlayButtonSection?"hide-play-section": "divided-section"}>
@@ -67,7 +75,7 @@ function App() {
           </article>
         </section>
         <section className={hidePlayButtonSection?"show-play-section": "hide-play-section"}>
-          <img src={getBeatIcons} className="bad-beat-icon-style" alt="Big red x symbol" />
+          <img src={getBeatIcons} className="icon-style" alt="Current beat" />
         </section>                
         <section className={remainingBeats < record1Answers.length?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
@@ -94,7 +102,7 @@ function App() {
           <h2>You Won</h2>
         </section>
         }
-        <section><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></section>
+        <footer><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></footer>
       </main>
     </div>
   );

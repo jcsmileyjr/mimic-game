@@ -5,6 +5,17 @@ Transition Color: //EAFF00
 Dark (grey) Secondary Color: #707070
 */
 
+.app {
+  height: 100vh;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .header-style {
   display: flex;
   flex-direction: column;
@@ -37,7 +48,6 @@ main, section {
 }
 
 h1 {
-  color: #0D0EFF;
   text-decoration: underline;
 }
 
@@ -47,8 +57,19 @@ h1 {
 }
 
 .instruction-style {
-  color: #0D0EFF;
   font-weight: bold;
+}
+
+.primary-color {
+  color: #0D0EFF;
+}
+
+.secondary-color {
+  color: white;
+}
+
+.constrast-black-color {
+  color: black
 }
 
 .space-between-key-group {
@@ -62,7 +83,7 @@ h1 {
 }
 
 .no-divider {
-  border: .5px solid grey;
+  border: none;
 }
 
 .keyboard-header-section {
@@ -78,11 +99,7 @@ h1 {
   display: none;
 }
 
-.show-play-section {
-  
-}
-
-.bad-beat-icon-style {
+.icon-style {
   height: 100px;
   width: 100px;
 }
@@ -118,8 +135,8 @@ h1 {
   background-color: #59FF26;
 }
 
-.green {
-  background-color: #00FF60;
+.salmon {
+  background-color: #FFAD61;
 }
 
 .blue {
@@ -129,9 +146,9 @@ h1 {
 .orange {
   background-color: #FFAC26;
 }
-
-.yellow {
-  background-color: #F0FF26;
+/* #D4E825 */
+.pineGreen {
+  background-color: #56B392;
 }
 
 .purple {

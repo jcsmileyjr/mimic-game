@@ -11,12 +11,12 @@ import rightSway from '../assets/right-sway-icon.png';
 import blankIcon from '../assets/blank-icon.png';
 
   // Function called, within the updateBeats(), when user click a beat the background color change 
-  const updateBackgroundColorByKey = (letterKey, isShowDanceColor, setBeatIcon) => {
+  const updateAnimationByKey = (letterKey, isShowDanceColor, setBeatIcon, setPrimaryColor) => {
     const danceColors = [
-      {colorKey:"A", color:"lightGreen", icon:danceLeft},
+      {colorKey:"A", color:"pineGreen", icon:danceLeft},
       {colorKey:"S", color:"blue", icon: danceRight},
-      {colorKey:"D", color:"yellow", icon: dipDance},
-      {colorKey:"F", color:"green", icon: djBooth},
+      {colorKey:"D", color:"lightGreen", icon: dipDance},
+      {colorKey:"F", color:"salmon", icon: djBooth},
       {colorKey:"G", color:"purple", icon: funSticker},
       {colorKey:"H", color:"red", icon: leftHop},
       {colorKey:"J", color:"orange", icon: rightHop},
@@ -29,6 +29,7 @@ import blankIcon from '../assets/blank-icon.png';
       if(letterKey === colorObject.colorKey){
         isShowDanceColor(colorObject.color)
         setBeatIcon(colorObject.icon);
+        setPrimaryColor(false);
       }
     })
 
@@ -36,11 +37,12 @@ import blankIcon from '../assets/blank-icon.png';
     setTimeout(() => {
       isShowDanceColor("white");
       setBeatIcon(blankIcon)
-    }, 600); //default is 300
+      setPrimaryColor(true)
+    }, 900); //default is 300
   }
 
   // Function called when user click a beat to update a score and update the "Listen" image to show the user if the beat is incorrect or correct. 
-  export const updateBeats = (key, remainingBeats,setRemainingBeats,recording, isShowDanceColor, setBeatIcon) => {
+  export const updateBeats = (key, remainingBeats,setRemainingBeats,recording, isShowDanceColor, setBeatIcon, setPrimaryColor) => {
     let correctKey = recording[remainingBeats];
 
     if(key === correctKey){
@@ -48,5 +50,5 @@ import blankIcon from '../assets/blank-icon.png';
       setRemainingBeats(currentBeatCount);
     }
 
-    updateBackgroundColorByKey(key, isShowDanceColor, setBeatIcon);
+    updateAnimationByKey(key, isShowDanceColor, setBeatIcon, setPrimaryColor);
   }
