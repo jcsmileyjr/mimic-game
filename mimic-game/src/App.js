@@ -32,7 +32,15 @@ function App() {
   const [showDanceColor, setDanceColor] = useState(0) //Update the background color when the user press a beat
   const [hidePlayButtonSection, setHidePlayButton] = useState(false); // After user gets the instructions and dance beat, hide the area
   const [getBeatIcons, setBeatIcons] = useState(blankIcon) // Updates a dance beat image while the user plays a beat
-  
+  const [startRecording, setRecording] = useState(false);
+
+
+  //Start recording all beats created by the user by clearing current recorded beats
+  const recordFreeStyleBeats = () => {
+    setUserActions([]); // Clear recorded beats
+    setRecording(true); // Hide the remaining beats for free-style
+    setRemainingBeats(0); // Reset game-play beat count
+  }
   const playRecordingOne = () => {
    let audio = new Audio(record1);
    audio.play();
@@ -41,11 +49,11 @@ function App() {
     setHidePlayButton(true);
     }, 9000);
   }
-
   
   const saveUserAction = (letter) => {
     // Hide play button area if user press a beat button
     setHidePlayButton(true);
+
     // Save the user's beat to be matched against the recored correct beat
     setUserActions([...userActions, letter]); 
 
@@ -79,7 +87,8 @@ function App() {
         <section className={remainingBeats < record1Answers.length?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>
-            <h3>Remaining Beats: {record1Answers.length-remainingBeats}</h3>
+            <h3 className={startRecording?"hide-play-section":""}>Remaining Beats: {record1Answers.length-remainingBeats}</h3>
+            <h3 className={!startRecording?"hide-play-section":""}>Free-Style</h3>
           </article>          
           <article>
             <Key letter="A" sound={sound1} userAction={saveUserAction}/>
@@ -111,7 +120,7 @@ function App() {
             <article className="options">
               <p className="icon-author">Record your own beat</p>
               <section className="record-button-section">
-                <button onClick={playRecordingOne} className="footer-button options record-buttons">Record</button>
+                <button onClick={recordFreeStyleBeats} className="footer-button options record-buttons">Record</button>
                 <button onClick={playRecordingOne} className="footer-button options record-buttons">Play</button>
               </section>
             </article>
