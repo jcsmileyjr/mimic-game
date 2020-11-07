@@ -13,10 +13,10 @@ import blankIcon from '../assets/blank-icon.png';
   // Function called, within the updateBeats(), when user click a beat the background color change 
   const updateAnimationByKey = (letterKey, isShowDanceColor, setBeatIcon, setPrimaryColor) => {
     const danceColors = [
-      {colorKey:"A", color:"lightGreen", icon:danceLeft},
+      {colorKey:"A", color:"pineGreen", icon:danceLeft},
       {colorKey:"S", color:"blue", icon: danceRight},
-      {colorKey:"D", color:"yellow", icon: dipDance},
-      {colorKey:"F", color:"green", icon: djBooth},
+      {colorKey:"D", color:"lightGreen", icon: dipDance},
+      {colorKey:"F", color:"salmon", icon: djBooth},
       {colorKey:"G", color:"purple", icon: funSticker},
       {colorKey:"H", color:"red", icon: leftHop},
       {colorKey:"J", color:"orange", icon: rightHop},
