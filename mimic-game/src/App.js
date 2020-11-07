@@ -102,7 +102,7 @@ function App() {
           <h2>You Won</h2>
         </section>
         }
-        <section><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></section>
+        <footer><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></footer>
       </main>
     </div>
   );

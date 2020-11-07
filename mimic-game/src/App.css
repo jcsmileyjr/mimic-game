@@ -9,6 +9,13 @@ Dark (grey) Secondary Color: #707070
   height: 100vh;
 }
 
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .header-style {
   display: flex;
   flex-direction: column;
