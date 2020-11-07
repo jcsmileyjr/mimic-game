@@ -2,6 +2,7 @@
 .image-section-style {
     display: flex;
     padding-top: 1vh;
+    padding-bottom: 4vh;
 }
 
 .image-style {

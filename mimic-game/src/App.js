@@ -57,7 +57,6 @@ function App() {
     <div className={`app ${showDanceColor}`}>
       <header className="header-style">
         <ImageGallary />
-        <p className={!showPrimaryColor?"constrast-black-color":""}>Let's play the game</p>
         <h1 className={showPrimaryColor?"remove-top-margin primary-color":"remove-top-margin secondary-color"}>Mimic the Beat</h1>
         <p className={showPrimaryColor?"instruction-section":"instruction-section constrast-black-color"}>Instructions: 
           <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Listen
