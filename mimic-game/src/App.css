@@ -76,7 +76,7 @@ h1 {
 }
 
 .no-divider {
-  border: .5px solid grey;
+  border: none;
 }
 
 .keyboard-header-section {
@@ -92,7 +92,7 @@ h1 {
   display: none;
 }
 
-.bad-beat-icon-style {
+.icon-style {
   height: 100px;
   width: 100px;
 }

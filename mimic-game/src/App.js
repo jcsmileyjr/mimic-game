@@ -1,6 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
 import Key from './Components/Key';
+import ImageGallary from './Components/ImageGallary.js';
 import {updateBeats} from './js/functions';
 
 /*Sounds use as beats when the user click a button */
@@ -55,13 +56,13 @@ function App() {
   return (
     <div className={`app ${showDanceColor}`}>
       <header className="header-style">
+        <ImageGallary />
         <p className={!showPrimaryColor?"constrast-black-color":""}>Let's play the game</p>
         <h1 className={showPrimaryColor?"remove-top-margin primary-color":"remove-top-margin secondary-color"}>Mimic the Beat</h1>
         <p className={showPrimaryColor?"instruction-section":"instruction-section constrast-black-color"}>Instructions: 
           <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Listen
           </span> to the <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}>Beat</span>, then 
-          <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Repeat</span>
-        
+          <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Repeat</span>        
         </p>
       </header>
       <main >
@@ -74,7 +75,7 @@ function App() {
           </article>
         </section>
         <section className={hidePlayButtonSection?"show-play-section": "hide-play-section"}>
-          <img src={getBeatIcons} className="bad-beat-icon-style" alt="Big red x symbol" />
+          <img src={getBeatIcons} className="icon-style" alt="Current beat" />
         </section>                
         <section className={remainingBeats < record1Answers.length?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
