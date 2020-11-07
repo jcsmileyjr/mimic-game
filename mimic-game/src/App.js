@@ -28,13 +28,9 @@ function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
   
-  const [showDanceColor, setDanceColor] = useState(0)
-  const [hidePlayButtonSection, setHidePlayButton] = useState(false);
-  const [getBeatIcons, setBeatIcons] = useState(blankIcon)
-  const [showListenIcon, setListenIcon] = useState(true); // Displays or hides the Listen image while the user plays a beat
-  const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
-  const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
-
+  const [showDanceColor, setDanceColor] = useState(0) //Update the background color when the user press a beat
+  const [hidePlayButtonSection, setHidePlayButton] = useState(false); // After user gets the instructions and dance beat, hide the area
+  const [getBeatIcons, setBeatIcons] = useState(blankIcon) // Updates a dance beat image while the user plays a beat
   
   const playRecordingOne = () => {
    let audio = new Audio(record1);
