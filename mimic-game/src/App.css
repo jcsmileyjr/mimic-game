@@ -74,6 +74,14 @@ h1 {
   display: none;
 }
 
+.hide-play-section {
+  display: none;
+}
+
+.show-play-section {
+  
+}
+
 .bad-beat-icon-style {
   height: 100px;
   width: 100px;
@@ -146,3 +154,6 @@ h1 {
   background-color: white;
 }
 
+.icon-author {
+  font-size: xx-small;
+}
