@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import Key from './Components/Key';
 import ImageGallary from './Components/ImageGallary.js';
-import {updateBeats} from './js/functions';
+import {updateBeats, updateAnimationByKey} from './js/functions';
 
 /*Sounds use as beats when the user click a button */
 import sound1 from './assets/boom.wav';
@@ -41,6 +41,8 @@ function App() {
     setRecording(true); // Hide the remaining beats for free-style
     setRemainingBeats(0); // Reset game-play beat count
   }
+
+  // Plays the first recording the  user suppose to mimic
   const playRecordingOne = () => {
    let audio = new Audio(record1);
    audio.play();
@@ -61,6 +63,16 @@ function App() {
     updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons, setPrimaryColor );
   }
 
+  // Play back the user free style play
+  function play(){
+    const freeStyleMode = true;
+    userActions.forEach((letter, key) => {
+      setTimeout(() => {
+        updateAnimationByKey(letter, setDanceColor, setBeatIcons, setPrimaryColor, freeStyleMode)
+      }, 1000 *key )
+    });
+  }
+  
   return (
     <div className={`app ${showDanceColor}`}>
       <header className="header-style">
@@ -121,7 +133,7 @@ function App() {
               <p className="icon-author">Record your own beat</p>
               <section className="record-button-section">
                 <button onClick={recordFreeStyleBeats} className="footer-button options record-buttons">Record</button>
-                <button onClick={playRecordingOne} className="footer-button options record-buttons">Play</button>
+                <button onClick={play} className="footer-button options record-buttons">Play</button>
               </section>
             </article>
           </section>
