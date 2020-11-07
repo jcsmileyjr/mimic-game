@@ -13,28 +13,32 @@ import sound6 from './assets/snare.wav';
 import sound7 from './assets/tink.wav';
 import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
-import record1 from './assets/record1.webm';
+import record1 from './assets/beat-1-A.webm';
 
-/*Images use to replace the listen image when the user choose an correct or incorrect beat */
-import badBeatIcon from './assets/wrongBeat.png';
-import celebration from './assets/celebration.png';
+// Images use to replace the current beat image when the user choose an beat 
+import blankIcon from './assets/blank-icon.png';
 
 /*Sequnece of correct letters for the correct beat */
-const record1Answers = ["A","S","D","F","G","H","J","K","L"];
+//const record2Answers = ["A","S","D","F","G","H","J","K","L"];
+const record1Answers = ["A", "A", "S", "A", "A", "S","J", "A", "A", "S", "A", "A", "S","J" ];
 
 
 
 function App() {
   const [userActions, setUserActions] = useState([]); // Saves the user's chosen letters to be compare later to the correct sequence of letters
   const [remainingBeats, setRemainingBeats] = useState(0); // Update the count of correct beats chosen by the user
-  const [showListenIcon, setListenIcon] = useState(true); // Displays or hides the Listen image while the user plays a beat
-  const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
-  const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
-
- 
+  
+  const [showDanceColor, setDanceColor] = useState(0) //Update the background color when the user press a beat
+  const [hidePlayButtonSection, setHidePlayButton] = useState(false); // After user gets the instructions and dance beat, hide the area
+  const [getBeatIcons, setBeatIcons] = useState(blankIcon) // Updates a dance beat image while the user plays a beat
+  
   const playRecordingOne = () => {
-    let audio = new Audio(record1);
-        audio.play();
+   let audio = new Audio(record1);
+   audio.play();
+
+   setTimeout(() => {
+    setHidePlayButton(true);
+    }, 9000);
   }
 
   
@@ -43,38 +47,32 @@ function App() {
     setUserActions([...userActions, letter]); 
 
     // Update the score and image to show correct and incorrect beat chosen
-    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setListenIcon,setCorrectBeatIcon, setBadBeatIcon );
+    updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons );
   }
 
   return (
-    <div className="App">
+    <div className={`app ${showDanceColor}`}>
       <header className="header-style">
         <p>Let's play the game</p>
         <h1 className="remove-top-margin">Mimic the Beat</h1>
         <p className="instruction-section">Instructions: <span className="instruction-style">Listen</span> to the <span className="instruction-style">Beat</span>, then <span className="instruction-style">Repeat</span></p>
       </header>
-      <main>        
-        <section className={showListenIcon?"section-divider":"hide-icon"}>
-          <h3>Click to Listen</h3>
-          <button onClick={playRecordingOne}>
-            <svg className="play-music" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
-              <path d="M0 1v22h24v-22h-24zm4 20h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm14 12h-12v-10h12v10zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm-12 10v-6l5 3-5 3z"/>
-            </svg>
-          </button>
+      <main >
+        <section className={hidePlayButtonSection?"hide-play-section": "divided-section"}>
+          <article className="play-area narrative-text">
+            <p>What's up junior Beat Master. Class is in session and Super-Hero Beat Master Flex is ready to teach a lesson. Mimic his beat so the party people can move their feet.</p>
+          </article>
+          <article className="play-area play-button-area">
+            <button onClick={playRecordingOne} className="play-button"><p>Play the Beat</p></button>
+          </article>
         </section>
-        <section className={showCorrectBeatIcon?"section-divider":"hide-icon"}>
-          <h3>Perfect</h3>
-          <img src={celebration} className="bad-beat-icon-style" alt="Big green party symbol" />
-        </section>
-        <section className={showBadBeatIcon?"section-divider":"hide-icon"}>
-          <h3>Incorrect</h3>
-          <img src={badBeatIcon} className="bad-beat-icon-style" alt="Big red x symbol" />
-        </section>
-                
-        <section className={remainingBeats < 9?"no-divider":"hide-icon"}>
+        <section className={hidePlayButtonSection?"show-play-section": "hide-play-section"}>
+          <img src={getBeatIcons} className="bad-beat-icon-style" alt="Big red x symbol" />
+        </section>                
+        <section className={remainingBeats < record1Answers.length?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>
-            <h3>Remaining Beats: {9-remainingBeats}</h3>
+            <h3>Remaining Beats: {record1Answers.length-remainingBeats}</h3>
           </article>          
           <article>
             <Key letter="A" sound={sound1} userAction={saveUserAction}/>
@@ -91,12 +89,12 @@ function App() {
           </article>
         </section>
 
-        {remainingBeats === 9 &&
+        {remainingBeats === record1Answers.length &&
         <section>
           <h2>You Won</h2>
         </section>
         }
-
+        <section><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></section>
       </main>
     </div>
   );

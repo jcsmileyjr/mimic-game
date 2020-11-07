@@ -53,6 +53,7 @@ h1 {
 
 .space-between-key-group {
   margin-top: 5vh;
+  margin-bottom: 5vh;/*temporary*/
 }
 
 .section-divider {
@@ -61,19 +62,98 @@ h1 {
 }
 
 .no-divider {
-  border: none;
+  border: .5px solid grey;
 }
 
 .keyboard-header-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .hide-icon {
   display: none;
 }
 
+.hide-play-section {
+  display: none;
+}
+
+.show-play-section {
+  
+}
+
 .bad-beat-icon-style {
   height: 100px;
   width: 100px;
+}
+
+.divided-section {
+  display: flex;
+}
+
+.play-area {
+  flex: 1;
+}
+
+.play-button-area {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 70%;
+}
+
+.play-button {
+  width: 50%;
+  height: 50%;
+  background-color: green;
+  color: white;
+}
+
+.narrative-text {
+  font-weight: bolder;
+  font-size: small;
+}
+
+.lightGreen {
+  background-color: #59FF26;
+}
+
+.green {
+  background-color: #00FF60;
+}
+
+.blue {
+  background-color: #0086FF;
+}
+
+.orange {
+  background-color: #FFAC26;
+}
+
+.yellow {
+  background-color: #F0FF26;
+}
+
+.purple {
+  background-color: #971AFF;
+}
+
+.red {
+  background-color: #FF3126;
+}
+
+.burntOrange {
+  background-color: #FFA71A;
+}
+
+.deepPurple {
+  background-color: #7D1FCC;
+}
+
+.white {
+  background-color: white;
+}
+
+.icon-author {
+  font-size: xx-small;
 }
