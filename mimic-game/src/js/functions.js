@@ -8,6 +8,7 @@ import funSticker from '../assets/fun-sticker-icon.png';
 import leftHop from '../assets/left-hop-icon.png';
 import rightHop from '../assets/right-hop-icon.png';
 import rightSway from '../assets/right-sway-icon.png';
+import blankIcon from '../assets/blank-icon.png';
 
   // Function called, within the updateBeats(), when user click a beat the background color change 
   const updateBackgroundColorByKey = (letterKey, isShowDanceColor, setBeatIcon) => {
@@ -23,18 +24,19 @@ import rightSway from '../assets/right-sway-icon.png';
       {colorKey:"L", color:"burntOrange", icon: celebration},
     ];
 
-    
+    // Match the pressed key to a color and beat image
     danceColors.forEach((colorObject) => {
       if(letterKey === colorObject.colorKey){
-        console.log("matching color key")
         isShowDanceColor(colorObject.color)
         setBeatIcon(colorObject.icon);
       }
     })
 
+    // Remove the color and image after the user press a beat
     setTimeout(() => {
       isShowDanceColor("white");
-    }, 300);
+      setBeatIcon(blankIcon)
+    }, 600); //default is 300
   }
 
   // Function called when user click a beat to update a score and update the "Listen" image to show the user if the beat is incorrect or correct. 

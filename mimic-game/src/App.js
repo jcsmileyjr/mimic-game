@@ -15,9 +15,8 @@ import sound8 from './assets/tom.wav';
 import sound9 from './assets/hihat.wav';
 import record1 from './assets/beat-1-A.webm';
 
-/*Images use to replace the listen image when the user choose an correct or incorrect beat */
-import badBeatIcon from './assets/wrongBeat.png';
-//import celebration from './assets/celebration.png';
+// Images use to replace the current beat image when the user choose an beat 
+import blankIcon from './assets/blank-icon.png';
 
 /*Sequnece of correct letters for the correct beat */
 //const record2Answers = ["A","S","D","F","G","H","J","K","L"];
@@ -31,7 +30,7 @@ function App() {
   
   const [showDanceColor, setDanceColor] = useState(0)
   const [hidePlayButtonSection, setHidePlayButton] = useState(false);
-  const [getBeatIcons, setBeatIcons] = useState(badBeatIcon)
+  const [getBeatIcons, setBeatIcons] = useState(blankIcon)
   const [showListenIcon, setListenIcon] = useState(true); // Displays or hides the Listen image while the user plays a beat
   const [showCorrectBeatIcon, setCorrectBeatIcon] = useState(false); //Displays or hides the Celebration image while the user plays a beat
   const [showBadBeatIcon, setBadBeatIcon] = useState(false); //Displays or hides the Bad Beat image while the user plays a beat
