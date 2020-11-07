@@ -5,6 +5,10 @@ Transition Color: //EAFF00
 Dark (grey) Secondary Color: #707070
 */
 
+.app {
+  height: 100vh;
+}
+
 .header-style {
   display: flex;
   flex-direction: column;
