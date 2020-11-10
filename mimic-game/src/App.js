@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState} from 'react';
 import Key from './Components/Key';
 import ImageGallary from './Components/ImageGallary.js';
-import {updateBeats} from './js/functions';
+import {updateBeats, updateAnimationByKey} from './js/functions';
 
 /*Sounds use as beats when the user click a button */
 import sound1 from './assets/boom.wav';
@@ -32,7 +32,18 @@ function App() {
   const [showDanceColor, setDanceColor] = useState(0) //Update the background color when the user press a beat
   const [hidePlayButtonSection, setHidePlayButton] = useState(false); // After user gets the instructions and dance beat, hide the area
   const [getBeatIcons, setBeatIcons] = useState(blankIcon) // Updates a dance beat image while the user plays a beat
-  
+  const [startRecording, setRecording] = useState(false);
+
+
+  //Start recording all beats created by the user by clearing current recorded beats
+  const recordFreeStyleBeats = () => {
+    setUserActions([]); // Clear recorded beats
+    setRecording(true); // Hide the remaining beats for free-style
+    setRemainingBeats(0); // Reset game-play beat count
+    setHidePlayButton(true)
+  }
+
+  // Plays the first recording the  user suppose to mimic
   const playRecordingOne = () => {
    let audio = new Audio(record1);
    audio.play();
@@ -41,11 +52,11 @@ function App() {
     setHidePlayButton(true);
     }, 9000);
   }
-
   
   const saveUserAction = (letter) => {
     // Hide play button area if user press a beat button
     setHidePlayButton(true);
+
     // Save the user's beat to be matched against the recored correct beat
     setUserActions([...userActions, letter]); 
 
@@ -53,11 +64,20 @@ function App() {
     updateBeats(letter,remainingBeats, setRemainingBeats, record1Answers, setDanceColor, setBeatIcons, setPrimaryColor );
   }
 
+  // Play back the user free style play
+  function play(){
+    const freeStyleMode = true;
+    userActions.forEach((letter, key) => {
+      setTimeout(() => {
+        updateAnimationByKey(letter, setDanceColor, setBeatIcons, setPrimaryColor, freeStyleMode)
+      }, 1000 *key )
+    });
+  }
+  
   return (
     <div className={`app ${showDanceColor}`}>
       <header className="header-style">
         <ImageGallary />
-        <p className={!showPrimaryColor?"constrast-black-color":""}>Let's play the game</p>
         <h1 className={showPrimaryColor?"remove-top-margin primary-color":"remove-top-margin secondary-color"}>Mimic the Beat</h1>
         <p className={showPrimaryColor?"instruction-section":"instruction-section constrast-black-color"}>Instructions: 
           <span className={showPrimaryColor?"instruction-style primary-color":"instruction-style secondary-color"}> Listen
@@ -80,7 +100,8 @@ function App() {
         <section className={remainingBeats < record1Answers.length?"no-divider":"hide-icon"}>
           <article className="keyboard-header-section">
             <h3>KeyBoard</h3>
-            <h3>Remaining Beats: {record1Answers.length-remainingBeats}</h3>
+            <h3 className={startRecording?"hide-play-section":""}>Remaining Beats: {record1Answers.length-remainingBeats}</h3>
+            <h3 className={!startRecording?"hide-play-section":""}>Free-Style</h3>
           </article>          
           <article>
             <Key letter="A" sound={sound1} userAction={saveUserAction}/>
@@ -102,8 +123,23 @@ function App() {
           <h2>You Won</h2>
         </section>
         }
-        <footer><p className="icon-author">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p></footer>
       </main>
+      <footer>
+          <section className="options-section">
+            <article className="options">
+              <p className="icon-author">Repeat "Beat Masters" training beat</p>
+              <button onClick={playRecordingOne} className="footer-button">Play the Beat</button>
+            </article>
+            <article className="options">
+              <p className="icon-author">Record your own beat</p>
+              <section className="record-button-section">
+                <button onClick={recordFreeStyleBeats} className="footer-button options record-buttons">Record</button>
+                <button onClick={play} className="footer-button options record-buttons">Play</button>
+              </section>
+            </article>
+          </section>
+          <p className="authors">Icons by Chameleon Design, Vincent Le Moign, and Dot on Paper of https://icon-icons.com/</p>
+          </footer>
     </div>
   );
 }

@@ -7,13 +7,13 @@ Dark (grey) Secondary Color: #707070
 
 .app {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+
+main{
+  flex: 1;
 }
 
 .header-style {
@@ -73,8 +73,8 @@ h1 {
 }
 
 .space-between-key-group {
-  margin-top: 5vh;
-  margin-bottom: 5vh;/*temporary*/
+  margin-top: 3vh;
+  margin-bottom: 3vh;/*temporary*/
 }
 
 .section-divider {
@@ -172,5 +172,43 @@ h1 {
 }
 
 .icon-author {
+  font-size: x-small;
+  font-weight: bold;
+}
+
+.authors {
+  text-align: center;
   font-size: xx-small;
+}
+
+footer {
+  flex: 1;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-button {
+  max-height: 4vh;
+  background-color: green;
+  color: white;
+  flex: 1;
+}
+
+.options-section {
+  display: flex;  
+}
+
+.options {
+  flex: 1;
+}
+
+.record-button-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.record-buttons {
+  max-width: 20vw;
 }
