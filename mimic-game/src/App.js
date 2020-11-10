@@ -40,6 +40,7 @@ function App() {
     setUserActions([]); // Clear recorded beats
     setRecording(true); // Hide the remaining beats for free-style
     setRemainingBeats(0); // Reset game-play beat count
+    setHidePlayButton(true)
   }
 
   // Plays the first recording the  user suppose to mimic
